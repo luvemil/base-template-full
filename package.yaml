@@ -1,0 +1,48 @@
+name:                base-template-full
+version:             0.1.0.0
+github:              "luvemil/base-template-full"
+license:             BSD3
+author:              "Marco Tarantino"
+maintainer:          "taran.marco@protonmail.com"
+copyright:           "2021 Marco Tarantino"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            none
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/luvemil/base-template-full#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  base-template-full-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base-template-full
+
+tests:
+  base-template-full-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base-template-full
