@@ -1,14 +1,14 @@
-name:                base-template-full
-version:             0.1.0.0
-github:              "luvemil/base-template-full"
-license:             BSD3
-author:              "Marco Tarantino"
-maintainer:          "taran.marco@protonmail.com"
-copyright:           "2021 Marco Tarantino"
+name: base-template-full
+version: 0.1.0.0
+github: "luvemil/base-template-full"
+license: BSD3
+author: "Marco Tarantino"
+maintainer: "taran.marco@protonmail.com"
+copyright: "2021 Marco Tarantino"
 
 extra-source-files:
-- README.md
-- ChangeLog.md
+  - README.md
+  - ChangeLog.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,32 +17,84 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/luvemil/base-template-full#readme>
+description: Please see the README on GitHub at <https://github.com/luvemil/base-template-full#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+  - base >= 4.7 && < 5
+  - mtl
+  - tomland
+  - bytestring
+  - aeson
+  - servant
+  - servant-server
+  - polysemy
+  - polysemy-plugin
+  - text
+  - time
+  - warp
+  - containers
+  - lens
+  - generic-lens
+  - directory
+  - sqlite-simple
+
+ghc-options:
+  - -Wall
+  - -Wincomplete-uni-patterns
+  - -Wincomplete-record-updates
+  - -Wcompat
+  - -Widentities
+  - -Wredundant-constraints
+  - -fhide-source-paths
+  - -Wpartial-fields
+  - -fplugin=Polysemy.Plugin
+
+default-extensions:
+  - BangPatterns
+  - ConstraintKinds
+  - DataKinds
+  - DeriveGeneric
+  - DerivingStrategies
+  - DerivingVia
+  - FlexibleContexts
+  - FlexibleInstances
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - InstanceSigs
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - OverloadedStrings
+  - OverloadedLabels
+  - PolyKinds
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - TypeApplications
+  - TypeFamilies
+  - TypeOperators
 
 library:
   source-dirs: src
 
 executables:
   base-template-full-exe:
-    main:                Main.hs
-    source-dirs:         app
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - base-template-full
+      - base-template-full
 
 tests:
   base-template-full-test:
-    main:                Spec.hs
-    source-dirs:         test
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - base-template-full
+      - base-template-full

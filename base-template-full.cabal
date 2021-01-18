@@ -25,13 +25,44 @@ source-repository head
 
 library
   exposed-modules:
+      Domain.Types
+      Domain.Types.Id
+      Domain.Types.User
+      Domain.UserDomain
+      ExternalInterfaces.ApplicationAssembly
+      InterfaceAdapters.Config
+      InterfaceAdapters.KVSFileServer
+      InterfaceAdapters.KVSInMemory
+      InterfaceAdapters.KVSSqlite
+      InterfaceAdapters.UserRestService
       Lib
+      UseCases.IdGen
+      UseCases.KVS
+      UseCases.UserUseCase
   other-modules:
       Paths_base_template_full
   hs-source-dirs:
       src
+  default-extensions: BangPatterns ConstraintKinds DataKinds DeriveGeneric DerivingStrategies DerivingVia FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses OverloadedStrings OverloadedLabels PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeFamilies TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , directory
+    , generic-lens
+    , lens
+    , mtl
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , text
+    , time
+    , tomland
+    , warp
   default-language: Haskell2010
 
 executable base-template-full-exe
@@ -40,10 +71,27 @@ executable base-template-full-exe
       Paths_base_template_full
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  default-extensions: BangPatterns ConstraintKinds DataKinds DeriveGeneric DerivingStrategies DerivingVia FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses OverloadedStrings OverloadedLabels PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeFamilies TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , base-template-full
+    , bytestring
+    , containers
+    , directory
+    , generic-lens
+    , lens
+    , mtl
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , text
+    , time
+    , tomland
+    , warp
   default-language: Haskell2010
 
 test-suite base-template-full-test
@@ -53,8 +101,25 @@ test-suite base-template-full-test
       Paths_base_template_full
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  default-extensions: BangPatterns ConstraintKinds DataKinds DeriveGeneric DerivingStrategies DerivingVia FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses OverloadedStrings OverloadedLabels PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeFamilies TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , base-template-full
+    , bytestring
+    , containers
+    , directory
+    , generic-lens
+    , lens
+    , mtl
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , text
+    , time
+    , tomland
+    , warp
   default-language: Haskell2010
