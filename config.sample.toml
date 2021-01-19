@@ -3,5 +3,5 @@ log.severity  = "Debug"
 
 port = 8080
 backend = "sqlite"
-dbPath = "testdb.db"
+dbPath = "data/testdb.db"
 verbose = true
