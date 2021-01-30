@@ -9,11 +9,17 @@ import Servant
 import qualified UseCases.UserUseCase as UC
 
 type UserAPI =
-    "users" :> Get '[JSON] [Dom.User]
-        :<|> "users" :> "summary" :> Get '[JSON] [String]
+    "users" :> Summary "Returns the list of all the users" :> Get '[JSON] [Dom.User]
+        :<|> "users" :> Summary "Returns a list of summaries for the users"
+            :> "summary"
+            :> Get '[JSON] [String]
+        :<|> "users" :> Summary "Add a new user"
+            :> ReqBody '[JSON] Dom.User
+            :> Post '[JSON] ()
 
+-- userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
 userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
-userServer = UC.listAll :<|> UC.listUsers
+userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser
 
 userAPI :: Proxy UserAPI
 userAPI = Proxy
