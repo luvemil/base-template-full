@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.2.
+-- This file has been generated from package.yaml by hpack version 0.34.3.
 --
 -- see: https://github.com/sol/hpack
 
@@ -98,28 +98,34 @@ test-suite base-template-full-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      DomainSpec
       Paths_base_template_full
   hs-source-dirs:
       test
   default-extensions: BangPatterns ConstraintKinds DataKinds DeriveGeneric DerivingStrategies DerivingVia FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses OverloadedStrings OverloadedLabels PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeFamilies TypeOperators
   ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , base >=4.7 && <5
     , base-template-full
     , bytestring
     , containers
     , directory
     , generic-lens
+    , hspec
+    , hspec-wai
     , lens
     , mtl
     , polysemy
     , polysemy-plugin
+    , quickcheck-io
     , servant
     , servant-server
     , sqlite-simple
     , text
     , time
     , tomland
+    , wai-extra
     , warp
   default-language: Haskell2010

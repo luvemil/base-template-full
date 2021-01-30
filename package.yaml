@@ -98,3 +98,9 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - base-template-full
+      - hspec
+      - QuickCheck
+      - quickcheck-io
+      - hspec-wai
+      #    - hspec-wai-json
+      - wai-extra
