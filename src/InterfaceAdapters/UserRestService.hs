@@ -16,10 +16,17 @@ type UserAPI =
         :<|> "users" :> Summary "Add a new user"
             :> ReqBody '[JSON] Dom.User
             :> Post '[JSON] ()
+        :<|> "users" :> Summary "Update a user"
+            :> Capture "userid" (Dom.Id Dom.User)
+            :> ReqBody '[JSON] Dom.User
+            :> Post '[JSON] ()
+        :<|> "users" :> Summary "Delete a user"
+            :> Capture "userid" (Dom.Id Dom.User)
+            :> Delete '[JSON] ()
 
 -- userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
 userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
-userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser
+userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser :<|> UC.updateUser :<|> UC.deleteUser
 
 userAPI :: Proxy UserAPI
 userAPI = Proxy
