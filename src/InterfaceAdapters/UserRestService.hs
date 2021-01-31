@@ -23,10 +23,13 @@ type UserAPI =
         :<|> "users" :> Summary "Delete a user"
             :> Capture "userid" (Dom.Id Dom.User)
             :> Delete '[JSON] ()
+        :<|> "users" :> Summary "Get user by id"
+            :> Capture "userid" (Dom.Id Dom.User)
+            :> Get '[JSON] Dom.User
 
 -- userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
 userServer :: (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r) => ServerT UserAPI (Sem r)
-userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser :<|> UC.updateUser :<|> UC.deleteUser
+userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser :<|> UC.updateUser :<|> UC.deleteUser :<|> UC.getUser
 
 userAPI :: Proxy UserAPI
 userAPI = Proxy
