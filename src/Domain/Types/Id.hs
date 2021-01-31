@@ -15,3 +15,9 @@ newtype Id a = Id {unId :: Text}
     deriving newtype (Eq, Ord, Read, FromJSON, ToJSON, Web.FromHttpApiData)
 
 type AnyId = Id ()
+
+data WithId a = WithId
+    { _id :: Id a
+    , content :: a
+    }
+    deriving (Eq, Show, Generic, Read)
