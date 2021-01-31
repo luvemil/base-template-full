@@ -37,6 +37,7 @@ dependencies:
   - generic-lens
   - directory
   - sqlite-simple
+  - http-api-data
 
 ghc-options:
   - -Wall

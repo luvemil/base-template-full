@@ -52,6 +52,7 @@ library
     , containers
     , directory
     , generic-lens
+    , http-api-data
     , lens
     , mtl
     , polysemy
@@ -81,6 +82,7 @@ executable base-template-full-exe
     , containers
     , directory
     , generic-lens
+    , http-api-data
     , lens
     , mtl
     , polysemy
@@ -115,6 +117,7 @@ test-suite base-template-full-test
     , generic-lens
     , hspec
     , hspec-wai
+    , http-api-data
     , lens
     , mtl
     , polysemy

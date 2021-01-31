@@ -8,9 +8,10 @@ module Domain.Types.Id (
 import Data.Aeson (FromJSON, ToJSON)
 import Data.Text (Text)
 import GHC.Generics (Generic)
+import qualified Web.Internal.HttpApiData as Web
 
 newtype Id a = Id {unId :: Text}
     deriving stock (Show, Generic)
-    deriving newtype (Eq, Ord, Read, FromJSON, ToJSON)
+    deriving newtype (Eq, Ord, Read, FromJSON, ToJSON, Web.FromHttpApiData)
 
 type AnyId = Id ()
