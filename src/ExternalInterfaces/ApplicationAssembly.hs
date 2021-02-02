@@ -6,6 +6,7 @@ import Data.ByteString (ByteString)
 import Data.ByteString.Lazy.Char8 (pack)
 import Data.Function ((&))
 import InterfaceAdapters.Config
+import InterfaceAdapters.IdGenRandom (runIdGenIO)
 import InterfaceAdapters.KVSFileServer (runKvsAsFileServer)
 import InterfaceAdapters.KVSSqlite (runKvsAsSQLite)
 import InterfaceAdapters.UserRestService
@@ -35,6 +36,7 @@ liftServer config = hoistServer userAPI (interpretServer config) userServer
     sem
       & selectKvsBackend conf
       & runInputConst conf
+      & runIdGenIO
       & runError @UserError
       & selectTraceVerbosity conf
       & runM

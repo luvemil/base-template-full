@@ -2,11 +2,12 @@
 
 module UseCases.IdGen where
 
+import Data.Proxy (Proxy)
 import Domain.Types
 import Polysemy
 
 -- | a key value store specified as A GADT type
-data IdGen k r a where
-    NewID :: IdGen k r (Id k)
+data IdGen r a where
+    NewID :: Proxy k -> IdGen r (Id k)
 
 makeSem ''IdGen
