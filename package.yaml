@@ -38,6 +38,8 @@ dependencies:
   - directory
   - sqlite-simple
   - http-api-data
+  - unordered-containers
+  - uuid
 
 ghc-options:
   - -Wall

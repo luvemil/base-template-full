@@ -31,6 +31,7 @@ library
       Domain.UserDomain
       ExternalInterfaces.ApplicationAssembly
       InterfaceAdapters.Config
+      InterfaceAdapters.IdGenRandom
       InterfaceAdapters.KVSFileServer
       InterfaceAdapters.KVSInMemory
       InterfaceAdapters.KVSSqlite
@@ -63,6 +64,8 @@ library
     , text
     , time
     , tomland
+    , unordered-containers
+    , uuid
     , warp
   default-language: Haskell2010
 
@@ -93,6 +96,8 @@ executable base-template-full-exe
     , text
     , time
     , tomland
+    , unordered-containers
+    , uuid
     , warp
   default-language: Haskell2010
 
@@ -129,6 +134,8 @@ test-suite base-template-full-test
     , text
     , time
     , tomland
+    , unordered-containers
+    , uuid
     , wai-extra
     , warp
   default-language: Haskell2010
