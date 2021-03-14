@@ -43,6 +43,8 @@ packages:
 extra-deps:
   - polysemy-plugin-0.2.5.1
   - servant-server-0.18.1
+  - git: git@github.com:luvemil/fakedata.git
+    commit: d1b4a77e57125bcf434904fb44761802e06ad774
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

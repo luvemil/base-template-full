@@ -27,16 +27,16 @@ import UseCases.UserUseCase
  All Polysemy interpretations must be executed here.
 -}
 createApp :: Config -> Application
-createApp config = serve userAPI (liftServer config)
+createApp config = serve myAPI (liftServer config)
 
-liftServer :: Config -> ServerT UserAPI Handler
-liftServer config = hoistServer userAPI (interpretServer config) userServer
+liftServer :: Config -> ServerT MyAPI Handler
+liftServer config = hoistServer myAPI (interpretServer config) myServer
  where
   interpretServer conf sem =
     sem
       & selectKvsBackend conf
-      & runInputConst conf
       & runIdGenIO
+      & runInputConst conf
       & runError @UserError
       & selectTraceVerbosity conf
       & runM
@@ -71,6 +71,7 @@ configT =
     <*> backendCodec .= backend
     <*> Toml.string "dbPath" .= dbPath
     <*> Toml.bool "verbose" .= verbose
+    <*> Toml.dioptional (Toml.text "fakerLocales") .= fakerLocales
 
 backendCodec :: TomlCodec Backend
 backendCodec = Toml.dimap outputBackend chooseBackend (Toml.text "backend")

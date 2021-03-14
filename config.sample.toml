@@ -2,3 +2,4 @@ port = 8080
 backend = "sqlite"
 dbPath = "data/testdb.db"
 verbose = true
+fakerLocales = "/path/to/fakedata/"

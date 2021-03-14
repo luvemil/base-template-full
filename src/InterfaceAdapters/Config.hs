@@ -1,5 +1,7 @@
 module InterfaceAdapters.Config where
 
+import Data.Text (Text)
+
 -- | global application configuration
 data Config = Config
   { -- | the port where the server is listening
@@ -10,6 +12,8 @@ data Config = Config
     dbPath :: String
   , -- | True enables logging
     verbose :: Bool
+  , -- | Location of faker locales
+    fakerLocales :: Maybe Text
   }
 
 data Backend = SQLite | FileServer | InMemory deriving (Show)

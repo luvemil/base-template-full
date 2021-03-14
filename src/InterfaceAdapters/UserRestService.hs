@@ -1,5 +1,6 @@
 module InterfaceAdapters.UserRestService where
 
+import qualified Data.Text as T
 import qualified Domain.Types as Dom
 import qualified Domain.UserDomain as Dom
 import Polysemy
@@ -7,6 +8,7 @@ import Polysemy.Error
 import Polysemy.Trace
 import Servant
 import UseCases.IdGen (IdGen)
+import qualified UseCases.IdGen as UC
 import qualified UseCases.UserUseCase as UC
 
 type UserAPI =
@@ -34,3 +36,20 @@ userServer = UC.listAll :<|> UC.listUsers :<|> UC.addUser :<|> UC.updateUser :<|
 
 userAPI :: Proxy UserAPI
 userAPI = Proxy
+
+type RandomAPI =
+    "random" :> Get '[JSON] T.Text
+        :<|> "random" :> "custom" :> Get '[JSON] T.Text
+
+randomServer :: (Member IdGen r) => ServerT RandomAPI (Sem r)
+randomServer = UC.newSlug False :<|> UC.newSlug True
+
+type MyAPI = UserAPI :<|> RandomAPI
+
+myAPI :: Proxy MyAPI
+myAPI = Proxy
+
+myServer ::
+    (Member UC.Persistence r, Member (Error UC.UserError) r, Member Trace r, Member IdGen r) =>
+    ServerT MyAPI (Sem r)
+myServer = userServer :<|> randomServer
